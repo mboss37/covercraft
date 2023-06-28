@@ -1,6 +1,6 @@
 import { FormData } from '../../typings';
 
-export function generateBasePrompt(formObject: FormData) {
+export function generateBasePrompt(formObject: FormData, language: string = 'German') {
 	const {
 		firstname,
 		lastname,
@@ -14,26 +14,23 @@ export function generateBasePrompt(formObject: FormData) {
 	const messages = [
 		{
 			'role': 'system',
-			'content': `You are an AI application expert and assistant specialized in writing professional cover letters. Use the provided information to generate a detailed and effective cover letter in multiple languages.`,
+			'content': `You are an AI application expert and assistant specialized in writing professional cover letters. Use the provided information to generate a detailed and effective cover letter text`,
 		},
 		{
 			'role': 'user',
 			'content': `
-                Personal Details:
+                Details:
                 Name: ${firstname} ${lastname}
                 Email: ${email}
-            
-                Job Details:
-                Job Title: ${jobTitle}
+                Job: ${jobTitle}
                 Workload: ${workload}
-                Company Name: ${companyName}
-                Job Description:
-                ${jobDescription}
+                Company: ${companyName}
+                Job Description: ${jobDescription}
             `,
 		},
 		{
 			'role': 'user',
-			'content': `Based on the provided information, please generate a first draft of a cover letter in German.`,
+			'content': `Generate a cover letter (text only) in ${language}. If the job title or description is not serious, respond with "Invalid Job Description in ${language}"`,
 		}
 	];
 

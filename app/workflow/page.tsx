@@ -3,7 +3,7 @@ import Form from "@/app/workflow/Form";
 
 const CvGenerator: NextPage = () => {
     return (
-        <div className="flex mx-auto w-full max-w-5xl flex-grow px-5 h-screen pt-16 md:pt-24 2xl:pt-44 2xl:h-full">
+        <div className="flex flex-grow w-full max-w-5xl min-h-screen px-5 py-16 mx-auto overflow-auto md:py-24 2xl:py-44 2xl:h-full">
             <Form/>
         </div>
     );

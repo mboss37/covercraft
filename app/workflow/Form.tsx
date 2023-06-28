@@ -4,6 +4,7 @@ import { useState } from "react";
 import { InputChangeEvent, FormSubmitEvent, FormData } from "../../typings";
 import { generateBasePrompt } from "../utils/promptUtils";
 import { BeatLoader } from "react-spinners";
+import { Tooltip, Button } from "@nextui-org/react";
 
 function Form() {
 	// Define the response text
@@ -127,7 +128,7 @@ function Form() {
 						<hr className="w-1/3 mb-5" />
 						{/* Step 1 content */}
 						<div className="mb-4">
-							<label className="form-form-input-field">Vorname:</label>
+							<label className="form-input-label">Vorname:</label>
 							<input
 								type="text"
 								name="firstname"
@@ -140,7 +141,7 @@ function Form() {
 							/>
 						</div>
 						<div className="mb-4">
-							<label className="form-form-input-field">Nachname:</label>
+							<label className="form-input-label">Nachname:</label>
 							<input
 								type="text"
 								name="lastname"
@@ -153,7 +154,7 @@ function Form() {
 							/>
 						</div>
 						<div className="mb-4">
-							<label className="form-form-input-field">Email:</label>
+							<label className="form-input-label">Email:</label>
 							<input
 								type="email"
 								name="email"
@@ -192,7 +193,7 @@ function Form() {
 						{/* Step 2 content */}
 						<div className="grid grid-cols-2 gap-4 sm:grid-cols-4">
 							<div className="col-span-1 mb-4 sm:col-span-3">
-								<label className="form-form-input-field">Job Titel:</label>
+								<label className="form-input-label">Job Titel:</label>
 								<input
 									type="text"
 									name="jobTitle"
@@ -204,17 +205,17 @@ function Form() {
 								/>
 							</div>
 							<div className="mb-4">
-								<label className="col-span-1 sm:col-span-1 form-form-input-field">
+								<label className="col-span-1 sm:col-span-1 form-input-label">
 									Arbeitspensum:
 								</label>
 								<select
-									className="form-input-field "
+									className="form-input-field"
 									name="workload"
 									value={workload}
 									onChange={handleInputChange}
 									required={true}
 								>
-									<option value="">Bitte auswählen</option>
+									<option value="">auswählen</option>
 									{Array.from({ length: 9 }, (_, i) => (
 										<option key={i} value={`${(i + 2) * 10}%`}>
 											{`${(i + 2) * 10}%`}
@@ -224,7 +225,7 @@ function Form() {
 							</div>
 						</div>
 						<div className="mb-4">
-							<label className="form-form-input-field">Firmenname:</label>
+							<label className="form-input-label">Firmenname:</label>
 							<input
 								type="text"
 								name="companyName"
@@ -236,7 +237,7 @@ function Form() {
 							/>
 						</div>
 						<div className="mb-4">
-							<label className="form-form-input-field">Job Beschreibung:</label>
+							<label className="form-input-label">Job Beschreibung:</label>
 							<textarea
 								name="jobDescription"
 								value={jobDescription}
@@ -269,9 +270,9 @@ function Form() {
 			{step === 3 && (
 				<div>
 					<div className="p-10 bg-white rounded-lg drop-shadow-xl">
+						<h2 className="mb-5 form-label">Entwurf</h2>
 						<hr className="w-1/3 mb-5" />
-						<div>
-							<label className="form-form-input-field">Draft CV:</label>
+						<div className="mb-4">
 							<textarea
 								name="draftCV"
 								value={responseText}
@@ -288,6 +289,14 @@ function Form() {
 							>
 								Zurück
 							</button>
+							<Tooltip 
+								content={"Bald verfügbar"}
+								color="secondary"
+							>
+								<Button flat auto color="secondary">
+									Personalisieren
+								</Button>
+							</Tooltip>
 						</div>
 					</div>
 				</div>
