@@ -25,3 +25,23 @@ body {
     )
     rgb(var(--background-start-rgb));
 }
+
+@layer components {
+
+  /* .button-get-started {
+    @apply bg-black rounded-xl text-white font-medium sm:text-3xl text-2xl px-4 py-4 sm:mt-20 mt-20 hover:bg-black/80 whitespace-nowrap
+  } */
+
+  .form-input-label {
+    @apply block text-gray-700 mb-2 sm:text-base text-sm font-medium
+  }
+
+  .form-input-field {
+    @apply sm:text-base text-sm font-light border border-gray-300 rounded-md px-2 py-2 w-full
+  }
+
+  .form-label {
+    @apply sm:text-2xl text-sm font-bold mb-4 uppercase
+  }
+
+}
